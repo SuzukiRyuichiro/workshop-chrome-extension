@@ -56,6 +56,8 @@ Open the Chrome console:
 
 **`✲ Ctrl + ⇧ Shift + C`** on Windows
 
+---
+
 ### Selecting elements in the DOM
 
 ```javascript
@@ -86,6 +88,8 @@ element.classList.add("hidden");
 img.src =
   "https://raw.githubusercontent.com/SuzukiRyuichiro/workshop-chrome-extension/master/images/hedgehog.jpg";
 ```
+
+---
 
 ### User interaction
 
@@ -122,6 +126,8 @@ Use what we've learned so far to replace all the images on [this website](https:
 
 Once this is done, let's put this script in a Chrome extension!
 
+---
+
 ### Basic structure of a Chrome extension
 
 The manifest is a simple JSON file that tells the browser about your web application, and it is the only file that every extension using WebExtension APIs must contain.
@@ -142,7 +148,7 @@ The manifest is a simple JSON file that tells the browser about your web applica
   "background": {
     // ...
   },
-  "browser_action": {
+  "action": {
     // ...
   },
   "icons": {
@@ -262,7 +268,7 @@ Add this to your manifest.json file.
 
   "action": {
     "default_popup": "popup.html",
-    "default_title": "My first Chrome Extension"
+    "default_title": "Baconify"
   },
 
   // ...
