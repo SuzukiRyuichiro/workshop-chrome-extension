@@ -235,7 +235,7 @@ Create your menu or copy-paste the code below into `popup.html`.
     <h1>My first Chrome extension</h1>
     <button id="baconify">
       <span>🥓</span>
-      <p>baconify Page</p>
+      <p>Baconify Page</p>
     </button>
     <script src="scripts/popup.js"></script>
   </body>
@@ -258,7 +258,7 @@ Add this to your manifest.json file.
 {
   // ...
 
-  "browser_action": {
+  "action": {
     "default_popup": "popup.html",
     "default_title": "My first Chrome Extension"
   },
