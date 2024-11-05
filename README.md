@@ -10,7 +10,7 @@ _By [Trouni Tiet](https://linkedin.com/in/trouni) for [Le Wagon Tokyo](https://w
 
 ## Setup
 
-All you need for this workshop is [Google Chrome](https://www.google.com/chrome/) and a text editor or IDE like [Sublime Text](https://www.sublimetext.com/) or [VS Code](https://code.visualstudio.com/download).
+All you need for this workshop is [Google Chrome](https://www.google.com/chrome/) or any other chromium based browser, and a text editor or IDE like [Sublime Text](https://www.sublimetext.com/) or [VS Code](https://code.visualstudio.com/download).
 
 ##### **TODO:**
 
@@ -26,9 +26,11 @@ git clone https://github.com/SuzukiRyuichiro/workshop-chrome-extension.git
 
 With ad blockers, integration to third party apps like Evernote or your favourite to-do app, or many humoristic extensions, Chrome extensions can be extremely powerful, but also very fun to use. The good news is that it's also super easy to build a Chrome extension. This workshop will take you step-by-step through the journey of creating and publishing your first Chrome extension, while teaching you the key concepts to understand.
 
+---
+
 ### What to expect from this workshop
 
-bacon. 🧀
+bacon 🥓
 
 But also, here are key aspects that we'll be covering:
 
