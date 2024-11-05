@@ -291,7 +291,7 @@ Let's apply this to our extension and trigger the baconify script when we click 
 // scripts/popup.js
 
 // Send a message to the active tab to 'baconify' it
-function sendbaconifyMsg() {
+function sendBaconifyMsg() {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     // Finds tabs that are active in the current window
     chrome.tabs.sendMessage(tabs[0].id, { action: "baconify" }); // Sends a message (object) to the first tab (tabs[0])
@@ -301,15 +301,15 @@ function sendbaconifyMsg() {
 // Trigger the function above when clicking the 'baconify' button
 document
   .querySelector("#baconify")
-  .addEventListener("click", (event) => sendbaconifyMsg());
+  .addEventListener("click", (event) => sendBaconifyMsg());
 ```
 
 ### Listening for messages in tabs / content scripts
 
-Now, all that's keeping us from turning our web page into dairy heaven is learning how to intercept the message we've just sent, then trigger an action based on that. We will be using the chrome.runtime API and more specifically, the `onMessage.addListener` method:
+Now, all that's keeping us from turning our web page into meat eater's heaven is learning how to intercept the message we've just sent, then trigger an action based on that. We will be using the chrome.runtime API and more specifically, the `onMessage.addListener` method:
 
 ```javascript
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   // actions based on the request (which corresponds to the object we sent in our message)
 });
 ```
@@ -324,17 +324,17 @@ Complete/replace your code in baconify.js with the one below.
 // baconify.js
 
 // Listen for messages on the content page
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === "baconify") baconify();
 });
 
 // Our image replacement script
-function baconify() {
+const baconify = () => {
   document.querySelectorAll("img").forEach((img) => {
     img.src = `https://baconmockup.com/${img.width}/${img.height}`;
     img.srcset = img.src;
   });
-}
+};
 ```
 
 Awesome! You should now be able to click on the extension's icon, then click on the 'baconify Page' button to run our baconify script.
@@ -360,5 +360,8 @@ Show me what you've built! Contact me and let me know what extensions you've cre
 
 Workshop/tutorial by **Trouni Tiet**\
 [LinkedIn](https://linkedin.com/trouni) | [GitHub](https://github.com/trouni)\
+\
+Updated to Manifest Versiosn 3 by **Ryuichiro Suzuki**\
+[LinkedIn](https://www.linkedin.com/in/suzukiryuichiro/) | [GitHub](https://github.com/SuzukiRyuichiro)\
 \
 _Created for [Le Wagon Tokyo](https://www.lewagon.com/tokyo)_
