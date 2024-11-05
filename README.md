@@ -212,7 +212,7 @@ In your manifest, add the following to run our baconify script on all the pages 
 
 ## Add a menu to our extension
 
-Our script now runs on every single page we visit, and although I'm definitely loving all that cheesy goodness, I can think of a few situations where replacing all images on the internet with photos of coagulated milk may not be entirely relevant. So let's add a menu to our extension, in order to trigger the cheesification of our page only when we _actually_ need it.
+Our script now runs on every single page we visit, and although I'm definitely loving all that greasy goodness, I can think of a few situations where replacing all images on the internet with photos of fatty chunk of meat may not be entirely relevant. So let's add a menu to our extension, in order to trigger the baconification of our page only when we _actually_ need it.
 
 ### Creating the menu UI in HTML/CSS
 
