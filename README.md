@@ -161,6 +161,8 @@ The manifest is a simple JSON file that tells the browser about your web applica
 
 ```
 
+---
+
 ### Loading our extension into Chrome
 
 ##### **TODO:**
@@ -168,9 +170,11 @@ The manifest is a simple JSON file that tells the browser about your web applica
 1. Enter `chrome://extensions` in the Chrome search bar, and activate developer mode (top-right corner)
 2. Click '**Load unpacked**' and select your workshop-chrome-extension folder.
 
+---
+
 ### Content scripts & Background / Event scripts
 
-![Structure of a Chrome extension](https://raw.githubusercontent.com/trouni/workshop-chrome-extension/master/images/chrome-extension-structure.png)
+![Structure of a Chrome extension](https://raw.githubusercontent.com/SuzukiRyuichiro/workshop-chrome-extension/master/images/chrome-extension-structure.png)
 
 **Content scripts** run in the context of a web page / tab, and allow you to get information from it, or even change its contents. On the other side, as its name suggests, a **background script** runs in the background of the Chrome browser, acting as a controller and used to maintain state for your extension.
 
