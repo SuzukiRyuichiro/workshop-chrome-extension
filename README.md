@@ -28,7 +28,7 @@ With ad blockers, integration to third party apps like Evernote or your favourit
 
 ### What to expect from this workshop
 
-Cheese. 🧀
+bacon. 🧀
 
 But also, here are key aspects that we'll be covering:
 
@@ -100,19 +100,17 @@ Check out the [Event reference documentation](https://developer.mozilla.org/en-U
 
 ---
 
-## Building a "cheesifier" Chrome extension
+## Building a "baconifier" Chrome extension
 
-We'll create an extension that replaces all images on a web page with photos of cheese 🧀.
+We'll create an extension that replaces all images on a web page with photos of bacon 🥓.
 
-### Unsplash Source
+### baconmockup
 
-Let's use [Unsplash Source](https://source.unsplash.com), to find random cheese images [like this one](https://source.unsplash.com/featured/?cheese), using `https://source.unsplash.com/collection/8884129/`.
-
-> You can also use `https://source.unsplash.com/featured/?cheese` and replace `cheese` with anything you want (e.g. `wine`, `puppy`, etc.)
+Let's use [baconmockup](https://source.unsplash.com), a service that will give you a random picture of bacon based on the image size.
 
 ##### **TODO:**
 
-Use what we've learned so far to replace all the images on [this website](https://japantoday.com/) with photos of cheese.
+Use what we've learned so far to replace all the images on [this website](https://japantoday.com/) with photos of bacon.
 
 **Hint:**
 
@@ -176,13 +174,11 @@ Since it interacts with our page, our image replacing script should go into a co
 
 ##### **TODO:**
 
-- Add this snippet to the `scripts/cheesify.js` file.
+- Add this snippet to the `scripts/baconify.js` file.
 
 ```javascript
 document.querySelectorAll("img").forEach((img) => {
-  img.src = `https://source.unsplash.com/collection/8884129/${img.width}x${
-    img.height
-  }?${Math.random()}`;
+  img.src = `https://baconmockup.com/${img.width}/${img.height}`;
   img.srcset = img.src;
 });
 ```
@@ -191,7 +187,7 @@ document.querySelectorAll("img").forEach((img) => {
 
 ##### **TODO:**
 
-In your manifest, add the following to run our cheesify script on all the pages we visit.
+In your manifest, add the following to run our baconify script on all the pages we visit.
 
 ```javascript
 // manifest.json
@@ -204,7 +200,7 @@ In your manifest, add the following to run our cheesify script on all the pages 
       "matches": [
         "<all_urls>"
       ],
-      "js": ["scripts/cheesify.js"]
+      "js": ["scripts/baconify.js"]
     }
   ],
 
@@ -237,9 +233,9 @@ Create your menu or copy-paste the code below into `popup.html`.
   </head>
   <body>
     <h1>My first Chrome extension</h1>
-    <button id="cheesify">
-      <span>🧀</span>
-      <p>Cheesify Page</p>
+    <button id="baconify">
+      <span>🥓</span>
+      <p>baconify Page</p>
     </button>
     <script src="scripts/popup.js"></script>
   </body>
@@ -273,7 +269,7 @@ Add this to your manifest.json file.
 
 ### Passing messages to tabs / content scripts
 
-When we click the button of our `popup.html` page, we should send a message to the `cheesify.js` content script and trigger our image replacement script.
+When we click the button of our `popup.html` page, we should send a message to the `baconify.js` content script and trigger our image replacement script.
 
 Here are some useful methods to pass messages to content scripts:
 
@@ -289,23 +285,23 @@ _Learn more in the [chrome.tabs API](https://developer.chrome.com/extensions/tab
 
 ##### **TODO:**
 
-Let's apply this to our extension and trigger the cheesify script when we click on our button.
+Let's apply this to our extension and trigger the baconify script when we click on our button.
 
 ```javascript
 // scripts/popup.js
 
-// Send a message to the active tab to 'cheesify' it
-function sendCheesifyMsg() {
+// Send a message to the active tab to 'baconify' it
+function sendbaconifyMsg() {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     // Finds tabs that are active in the current window
-    chrome.tabs.sendMessage(tabs[0].id, { action: "cheesify" }); // Sends a message (object) to the first tab (tabs[0])
+    chrome.tabs.sendMessage(tabs[0].id, { action: "baconify" }); // Sends a message (object) to the first tab (tabs[0])
   });
 }
 
-// Trigger the function above when clicking the 'Cheesify' button
+// Trigger the function above when clicking the 'baconify' button
 document
-  .querySelector("#cheesify")
-  .addEventListener("click", (event) => sendCheesifyMsg());
+  .querySelector("#baconify")
+  .addEventListener("click", (event) => sendbaconifyMsg());
 ```
 
 ### Listening for messages in tabs / content scripts
@@ -322,28 +318,26 @@ _Learn more in the [chrome.runtime API](https://developer.chrome.com/apps/runtim
 
 ##### **TODO:**
 
-Complete/replace your code in cheesify.js with the one below.
+Complete/replace your code in baconify.js with the one below.
 
 ```javascript
-// cheesify.js
+// baconify.js
 
 // Listen for messages on the content page
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  if (request.action === "cheesify") cheesify();
+  if (request.action === "baconify") baconify();
 });
 
 // Our image replacement script
-function cheesify() {
+function baconify() {
   document.querySelectorAll("img").forEach((img) => {
-    img.src = `https://source.unsplash.com/${img.width}x${
-      img.height
-    }/?cheese&${Math.random()}`;
+    img.src = `https://baconmockup.com/${img.width}/${img.height}`;
     img.srcset = img.src;
   });
 }
 ```
 
-Awesome! You should now be able to click on the extension's icon, then click on the 'Cheesify Page' button to run our cheesify script.
+Awesome! You should now be able to click on the extension's icon, then click on the 'baconify Page' button to run our baconify script.
 
 ---
 
