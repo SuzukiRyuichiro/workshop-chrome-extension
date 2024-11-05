@@ -180,6 +180,8 @@ The manifest is a simple JSON file that tells the browser about your web applica
 
 While content scripts have limited access to the Chrome Extension APIs, background scripts can make full use of them. **As a general rule, content scripts should be used to interact with web pages / tabs, while the logic should ideally be located in the background script.**
 
+---
+
 ### Creating our first content script
 
 Since it interacts with our page, our image replacing script should go into a content script.
