@@ -197,6 +197,8 @@ document.querySelectorAll("img").forEach((img) => {
 });
 ```
 
+---
+
 ### Adding our script to the manifest
 
 ##### **TODO:**
@@ -228,6 +230,8 @@ In your manifest, add the following to run our baconify script on all the pages 
 
 Our script now runs on every single page we visit, and although I'm definitely loving all that greasy goodness, I can think of a few situations where replacing all images on the internet with photos of fatty chunk of meat may not be entirely relevant. So let's add a menu to our extension, in order to trigger the baconification of our page only when we _actually_ need it.
 
+---
+
 ### Creating the menu UI in HTML/CSS
 
 ##### **TODO:**
@@ -258,6 +262,8 @@ Create your menu or copy-paste the code below into `popup.html`.
 
 _I have already included some CSS styling in `style/popup.css` for the template above._
 
+---
+
 ### Adding our menu to the manifest
 
 We need to let Chrome know that the menu for our extension is now in our `popup.html` file.
@@ -280,6 +286,8 @@ Add this to your manifest.json file.
   // ...
 }
 ```
+
+---
 
 ### Passing messages to tabs / content scripts
 
@@ -305,18 +313,20 @@ Let's apply this to our extension and trigger the baconify script when we click 
 // scripts/popup.js
 
 // Send a message to the active tab to 'baconify' it
-function sendBaconifyMsg() {
+const sendBaconifyMsg = () => {
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     // Finds tabs that are active in the current window
     chrome.tabs.sendMessage(tabs[0].id, { action: "baconify" }); // Sends a message (object) to the first tab (tabs[0])
   });
-}
+};
 
 // Trigger the function above when clicking the 'baconify' button
 document
   .querySelector("#baconify")
   .addEventListener("click", (event) => sendBaconifyMsg());
 ```
+
+---
 
 ### Listening for messages in tabs / content scripts
 
