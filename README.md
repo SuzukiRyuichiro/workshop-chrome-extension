@@ -347,11 +347,6 @@ Complete/replace your code in baconify.js with the one below.
 ```javascript
 // baconify.js
 
-// Listen for messages on the content page
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.action === "baconify") baconify();
-});
-
 // Our image replacement script
 const baconify = () => {
   document.querySelectorAll("img").forEach((img) => {
@@ -359,6 +354,11 @@ const baconify = () => {
     img.srcset = img.src;
   });
 };
+
+// Listen for messages on the content page
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  if (request.action === "baconify") baconify();
+});
 ```
 
 Awesome! You should now be able to click on the extension's icon, then click on the 'baconify Page' button to run our baconify script.
