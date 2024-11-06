@@ -314,7 +314,7 @@ Let's apply this to our extension and trigger the baconify script when we click 
 
 // Send a message to the active tab to 'baconify' it
 const sendBaconifyMsg = () => {
-  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     // Finds tabs that are active in the current window
     chrome.tabs.sendMessage(tabs[0].id, { action: "baconify" }); // Sends a message (object) to the first tab (tabs[0])
   });
